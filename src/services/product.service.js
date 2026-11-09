@@ -1,5 +1,6 @@
 import { getProductsFromDB, getProductByIdFromDB, createProductInDB, updateProductInDB, deleteProductInDB } from "../repositories/product.repository.js"
-import { formatProduct, formatProductDetail, formatProducts } from "../utils/product.util.js"
+import {getCategoryByIdFromDB} from "../repositories/category.repository.js"
+import { formatProductDetail, formatProducts } from "../utils/product.util.js"
 import { createError } from "../utils/error.util.js"
 import { validateCreateProduct,validateIdProduct,validateUpdateProduct } from "../validators/product.validator.js"
 export const getAllProducts = async (includeInactive = false) => {
@@ -19,6 +20,10 @@ export const createNewProduct = async (productData) => {
     const { name, description, price, stock, category_id } = productData
     const is_active = 1
     validateCreateProduct({ name, description, price, stock, category_id })
+    const category=await getCategoryByIdFromDB(category_id)
+    if (!category) {
+        throw createError(`Khong tim thay danh muc voi ID: ${category_id}`, 404)
+    }
     const newProduct = await createProductInDB(name, description, price, stock, category_id, is_active)
     return formatProductDetail(newProduct)
 }

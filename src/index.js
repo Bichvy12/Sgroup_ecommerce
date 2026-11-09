@@ -17,7 +17,7 @@ app.use(morgan('combined'))
 app.use('/api', rootRouter)
 app.use(notFoundHandler)
 app.use(errorHandler)
-app.listen(PORT, async () => {
+app.listen(PORT, "0.0.0.0",async () => {
   await connectionDb()
   console.log(`Server running on http://localhost:${PORT}`)
 })

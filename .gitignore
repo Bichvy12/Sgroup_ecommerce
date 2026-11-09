@@ -1,2 +1,5 @@
 node_modules/
 .env
+sgroup-ecommerce-keypairs.pem
+sgroup_ecommerce.sql
+sgroup_ecommerce.sql
