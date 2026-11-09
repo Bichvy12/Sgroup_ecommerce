@@ -1,6 +1,6 @@
 services:
   backend:
-    image: bichvy/ecommerce:v1
+    image: bichvy/ecommerce:lastest
     container_name: ecommerce-backend
     ports:
       - "3000:3000"

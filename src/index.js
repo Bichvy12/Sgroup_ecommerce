@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000
 app.use(express.json())
 app.get('/', (req, res) => {
   res.json({
-    message: 'API Server is running!'
+    message: 'API Server is running!Updated CICD'
   })
 })
 app.use(morgan('combined'))
